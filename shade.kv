@@ -1,0 +1,602 @@
+#import Factory kivy.factory.Factory
+#import op .shades.selection.op
+
+
+
+<shades>:        
+    GridLayout:
+        cols:3
+        
+        Button:
+            on_press: root.manager.current='shade1'
+            Image:
+                source: 'images/1.jpg'
+                allow_strech: True
+                center_x:self.parent.center_x
+                center_y:self.parent.center_y
+        Button:
+            on_press: root.manager.current='shade2'
+            Image:
+                source: 'images/2.jpg'
+                allow_strech: True
+                center_x:self.parent.center_x
+                center_y:self.parent.center_y
+        Button:
+            on_press: root.manager.current='shade3'
+            
+            Image:
+                source: 'images/3.jpg'
+                allow_strech: True
+                center_x:self.parent.center_x
+                center_y:self.parent.center_y
+        Button:
+            on_press: root.manager.current='shade4'
+            
+            Image:
+                source: 'images/4.jpg'
+                allow_strech: True
+                center_x:self.parent.center_x
+                center_y:self.parent.center_y
+                
+        Button:
+            on_press: root.manager.current='shade5'
+            
+            Image:
+                source: 'images/5.jpg'
+                allow_strech: True
+                center_x:self.parent.center_x
+                center_y:self.parent.center_y
+                
+        Button:
+            on_press: root.manager.current='shade6'
+            
+            Image:
+                source: 'images/6.jpg'
+                allow_strech: True
+                center_x:self.parent.center_x
+                center_y:self.parent.center_y
+                
+        Button:
+            on_press: root.manager.current='shade7'
+            Image:
+                source: 'images/7.jpg'
+                allow_strech: True
+                center_x:self.parent.center_x
+                center_y:self.parent.center_y
+                
+        Button:
+            on_press: root.manager.current='shade8'
+            Image:
+                source: 'images/8.jpg'
+                allow_strech: True
+                center_x:self.parent.center_x
+                center_y:self.parent.center_y
+        Button:
+            on_press: root.manager.current='menu'
+            text:"back"
+            
+<MenuScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        Button:
+            text:"Electronics"
+            on_press: root.manager.current='selection'
+        Button:
+            text:"clothes"
+            on_press: root.manager.current='shades'
+            
+            
+            
+<Electronics>:
+    popup:popup.__self__
+    popup1:popup1.__self__
+    popup2:popup2.__self__
+    popup3:popup3.__self__
+    
+    
+    GridLayout:
+        cols:2
+        id:g1
+        spacing: 2
+        Popup:
+            id:popup2
+            on_parent:
+                if self.parent==g1: self.parent.remove_widget(self)
+            title: 'friends'
+            BoxLayout:
+                BoxLayout:
+                    orientation: 'vertical'
+                    Label:
+                        text:"Your friend sai kiran has brought this phone"
+                    Button:
+                        size_hint: .3, .1
+                        pos_hint:{'x':.35,'y':.5}
+                        text: "Get his review"
+                    BoxLayout:
+                        size_hint: 1, .2
+                        Button:
+                            text:'Help?'
+                            on_press:popup2.dismiss()
+                            on_release:root.manager.current='help'
+                        Button:
+                            text: 'compare'
+                Button:
+                    text:'back'
+                    on_release: popup2.dismiss()
+        Popup:
+            id:popup3
+            on_parent:
+                if self.parent==g1: self.parent.remove_widget(self)
+            title: 'friends'
+            BoxLayout:
+                BoxLayout:
+                    orientation: 'vertical'
+                    Label:
+                        text:"None of your friends has got it yet be the first one"
+                    Button:
+                        size_hint: .3, .1
+                        pos_hint:{'x':.35,'y':.5}
+                        text: "Get his review"
+                    BoxLayout:
+                        size_hint: 1, .2
+                        Button:
+                            text:'Help?'
+                            on_press:popup2.dismiss()
+                            on_release:root.manager.current='help'
+                        Button:
+                            text: 'compare'
+                Button:
+                    text:'back'
+                    on_release: popup3.dismiss()
+        Popup:
+            id:popup
+            on_parent:
+                if self.parent==g1: self.parent.remove_widget(self)
+            title: 'friends'
+            BoxLayout:
+                BoxLayout:
+                    orientation: 'vertical'
+                    Label:
+                        text:" your friend named ravi has brought this phone"
+                    Button:
+                        size_hint: .3, .1
+                        pos_hint:{'x':.35,'y':.5}
+                        text: "Get his review"
+                    BoxLayout:
+                        size_hint: 1, .2
+                        Button:
+                            text:'Help?'
+                            on_press:popup2.dismiss()
+                            on_release:root.manager.current='help'
+                        Button:
+                            text: 'compare'
+                        
+                Button:
+                    text:'back'
+                    on_release: popup.dismiss()
+        Popup:
+            id:popup1
+            on_parent:
+                if self.parent==g1: self.parent.remove_widget(self)
+            title: 'friends'
+            BoxLayout:
+            
+                Label:
+                    text:"Click below to confirm your order "
+                Button:
+                    text:'Confirm'
+                    on_release: root.manager.current="finish"
+                    on_release: popup1.dismiss()
+                Button:
+                    text:"cancel"
+                    on_release: popup1.dismiss()
+        
+        BoxLayout:
+            orientation: 'vertical'
+            
+            id:b1
+            
+            BoxLayout:
+                canvas.before:
+                    Color:
+                        rgba: 1,1,1,0
+                    Rectangle:
+                        # self here refers to the widget i.e BoxLayout
+                        pos: self.pos
+                        size: self.size
+                orientation: 'vertical'
+                BoxLayout:
+                    BoxLayout:
+                        orientation: 'vertical'
+                        Label:
+                            text: "Nokia"
+                            
+                        Label:
+                            text: "5000 rupees"
+                        Label:
+                            text: "A phone with windows \n and android"
+                            size: self.size
+                    
+                    Image:
+                        source:'images/a.jpg'
+                        center_x:self.parent.center_x
+                        center_y:self.parent.center_y
+                    
+                
+                BoxLayout:
+                    size_hint: 1, .1
+                    Button:
+                        text:'Details'
+                        on_release: root.popup.open()
+                    Button:
+                        text:'Order'
+                        on_release: root.popup1.open()
+        BoxLayout:
+            orientation: 'vertical'
+            
+            id:b2
+            BoxLayout:
+                
+                canvas.before:
+                    Color:
+                        rgba: 1,1,1,0
+                    Rectangle:
+                        # self here refers to the widget i.e BoxLayout
+                        pos: self.pos
+                        size: self.size
+                orientation: 'vertical'
+                BoxLayout:
+                    BoxLayout:
+                        orientation: 'vertical'
+                        Label:
+                            text: "Nexus"
+                            
+                        Label:
+                            text: "10000 rupees"
+                        Label:
+                            text: "A great google phone"
+                            size: self.size
+                    Image:
+                        source:'images/b.jpg'
+                        center_x:self.parent.center_x
+                        center_y:self.parent.center_y
+                    
+                
+                BoxLayout:
+                    size_hint: 1, .1
+                    Button:
+                        text:'Details'
+                        on_release: root.popup2.open()
+                    Button:
+                        text:'Order'
+                        on_release: root.popup1.open()
+                        
+        BoxLayout:
+            orientation: 'vertical'
+            
+            id:b3
+            BoxLayout:
+                canvas.before:
+                    Color:
+                        rgba: 1,1,1,0
+                    Rectangle:
+                        # self here refers to the widget i.e BoxLayout
+                        pos: self.pos
+                        size: self.size
+                
+                orientation: 'vertical'
+                BoxLayout:
+                    Image:
+                        source:'images/c.jpg'
+                        center_x:self.parent.center_x
+                        center_y:self.parent.center_y
+                    BoxLayout:
+                        orientation: 'vertical'
+                        Label:
+                            text: "Apple"
+                            
+                        Label:
+                            text: "50000 rupees"
+                        Label:
+                            text: "The best choice for \n programmers"
+                            size: self.size
+                    
+                
+                BoxLayout:
+                    size_hint: 1, .1
+                    Button:
+                        text:'Details'
+                        on_release: root.popup3.open()
+                    Button:
+                        text:'Order'
+                        on_release: root.popup1.open()
+                        
+        Button:
+            text:"back"
+            on_release: root.manager.current="selection"
+
+
+
+<finish>:
+    BoxLayout:
+        Label:
+            text:"Thanks for ordering you can collect your order at counter"
+        Button:
+            text:"Done!"
+            on_release: root.manager.current="menu"
+
+
+
+
+        
+<shade1>:
+    GridLayout:
+        cols:2
+        spacing:2
+        Image:
+            source: 'images/1a.jpg'
+            allow_strech: True
+            center_x:self.parent.center_x
+            center_y:self.parent.center_y
+        Image:
+            source: 'images/1b.jpg'
+            allow_strech: True
+            center_x:self.parent.center_x
+            center_y:self.parent.center_y
+        Image:
+            source: 'images/1c.JPG'
+            allow_strech: True
+            center_x:self.parent.center_x
+            center_y:self.parent.center_y
+        Button:
+            text:'back'
+            on_press:root.manager.current='shades'
+
+<shade2>:
+    GridLayout:
+        cols:2
+        spacing:2
+        Image:
+            source: 'images/2a.jpg'
+            allow_strech: True
+            center_x:self.parent.center_x
+            center_y:self.parent.center_y
+        Image:
+            source: 'images/2b.jpg'
+            allow_strech: True
+            center_x:self.parent.center_x
+            center_y:self.parent.center_y
+        Image:
+            source: 'images/2c.jpg'
+            allow_strech: True
+            center_x:self.parent.center_x
+            center_y:self.parent.center_y
+        Button:
+            text:'back'
+            on_press:root.manager.current='shades'
+            
+<shade3>:
+    GridLayout:
+        cols:2
+        spacing:2
+        Image:
+            source: 'images/3a.jpg'
+            allow_strech: True
+            center_x:self.parent.center_x
+            center_y:self.parent.center_y
+        Image:
+            source: 'images/3b.jpg'
+            allow_strech: True
+            center_x:self.parent.center_x
+            center_y:self.parent.center_y
+        Image:
+            source: 'images/3c.jpg'
+            allow_strech: True
+            center_x:self.parent.center_x
+            center_y:self.parent.center_y
+        Button:
+            text:'back'
+            on_press:root.manager.current='shades'
+            
+<shade4>:
+    GridLayout:
+        cols:2
+        spacing:2
+        Image:
+            source: 'images/4a.jpg'
+            allow_strech: True
+            center_x:self.parent.center_x
+            center_y:self.parent.center_y
+        Image:
+            source: 'images/4b.jpg'
+            allow_strech: True
+            center_x:self.parent.center_x
+            center_y:self.parent.center_y
+        Image:
+            source: 'images/4c.jpg'
+            allow_strech: True
+            center_x:self.parent.center_x
+            center_y:self.parent.center_y
+        Button:
+            text:'back'
+            on_press:root.manager.current='shades'
+            
+<shade5>:
+    GridLayout:
+        cols:2
+        spacing:2
+        Image:
+            source: 'images/5a.jpg'
+            allow_strech: True
+            center_x:self.parent.center_x
+            center_y:self.parent.center_y
+        Image:
+            source: 'images/5b.jpg'
+            allow_strech: True
+            center_x:self.parent.center_x
+            center_y:self.parent.center_y
+        Image:
+            source: 'images/5c.jpg'
+            allow_strech: True
+            center_x:self.parent.center_x
+            center_y:self.parent.center_y
+        Button:
+            text:'back'
+            on_press:root.manager.current='shades'
+            
+<shade6>:
+    GridLayout:
+        cols:2
+        spacing:2
+        Image:
+            source: 'images/6a.jpg'
+            allow_strech: True
+            center_x:self.parent.center_x
+            center_y:self.parent.center_y
+        Image:
+            source: 'images/6b.jpg'
+            allow_strech: True
+            center_x:self.parent.center_x
+            center_y:self.parent.center_y
+        Image:
+            source: 'images/6c.jpg'
+            allow_strech: True
+            center_x:self.parent.center_x
+            center_y:self.parent.center_y
+        Button:
+            text:'back'
+            on_press:root.manager.current='shades'
+            
+<shade7>:
+    GridLayout:
+        cols:2
+        spacing:2
+        Image:
+            source: 'images/7a.jpg'
+            allow_strech: True
+            center_x:self.parent.center_x
+            center_y:self.parent.center_y
+        Image:
+            source: 'images/7b.jpg'
+            allow_strech: True
+            center_x:self.parent.center_x
+            center_y:self.parent.center_y
+        Image:
+            source: 'images/7c.jpg'
+            allow_strech: True
+            center_x:self.parent.center_x
+            center_y:self.parent.center_y
+        Button:
+            text:'back'
+            on_press:root.manager.current='shades'
+            
+<shade8>:
+    GridLayout:
+        cols:2
+        spacing:2
+        Image:
+            source: 'images/8a.jpg'                                                         
+            allow_strech: True
+            center_x:self.parent.center_x
+            center_y:self.parent.center_y
+        Image:
+            source: 'images/8b.jpg'
+            allow_strech: True
+            center_x:self.parent.center_x
+            center_y:self.parent.center_y
+        Image:
+            source: 'images/8c.jpg'
+            allow_strech: True
+            center_x:self.parent.center_x
+            center_y:self.parent.center_y
+        Button:
+            text:'back'
+            on_press:root.manager.current='shades'
+            
+
+
+<selection>:
+    stall: stall
+    stal: stal
+    
+    canvas.before:
+        Color:
+            rgba: 1,1,1,0
+        Rectangle:
+            # self here refers to the widget i.e BoxLayout
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        spacing: 10
+        orientation:'vertical'
+        center: root.center_x, self.height / 2 + 20
+        BoxLayout:
+            Label:
+                text:"welcome to future of retails"
+            Spinner:
+                id:stall
+                text:'Get stall numbers'
+                values:('S1','S2','S3')
+                size_hint: .2, .1
+                pos_hint: {'x':.4}
+                height: '48dp'
+                
+            
+        Spinner:
+            id:stal
+            text:'company'
+            values:('nokia','samsung','apple')
+            size_hint: .2, .2
+            pos_hint: {'x':.4}
+            height: '48dp'
+            on_text: root.op()
+            
+            
+        Spinner:
+            text:'price'
+            values:('1000-2000','2000-5000','5000-10000')
+            size_hint: .2, .2
+            pos_hint: {'x':.4}
+            height: '48dp'
+        Spinner:
+            text:'specifications'
+            values:('2G','3G','4G')
+            size_hint: .2, .2
+            pos_hint: {'x':.4}
+            height: '48dp'
+        Label:
+            text:"Other Specifications:"
+            size_hint: .2, .1
+            pos_hint: {'x':.2}
+        TextInput:
+            size_hint: .4, .2
+            pos_hint: {'x':.4}
+            
+        BoxLayout:
+            Button:
+                size_hint: .1, .2
+                text:"back"
+                on_release:root.manager.current='menu'
+            Button:
+                size_hint: .1, .2
+                pos_hint: {'x':.45}
+                id: help
+                text: "Help?"
+                on_release:root.manager.current='help'
+            
+            Button:
+                size_hint: .1, .2
+                pos_hint: {'x':.45}
+                id: button
+                text: "Go"
+                on_release: root.manager.current='Electronics'
+    
+    
+<help1>
+    Label: 
+        text:"please wait our staff will reach you"
+    Button:
+        size_hint: .1, .1
+        pos_hint: {'x':.45}
+        text:'ok'
+        on_release: root.manager.current='menu'
